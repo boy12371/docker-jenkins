@@ -1,0 +1,7 @@
+# 构建 + 执行
+export PATH=/repositories/aegis-docker/bin:$PATH
+cd /repositories/aegis-member;
+git pull;
+make image;
+make clean start;
+
