@@ -2,7 +2,7 @@
 
 source ../aegis-docker/bin/aegis-config;
 export pwd=$(pwd);
-export repo_root=$(cd $pwd/../..; pwd);
+export repo_root=$(cd $pwd/..; pwd);
 
 export container_name=jenkins-dev;
 export project_name=docker-jenkins;
@@ -12,10 +12,7 @@ export create_param="-v $HOME/.ssh:/var/jenkins_home/.ssh -v ${pwd}/bashrc:/var/
 
 # 重写mbt!!!!!
 mbt_rewrite;
-image() {
-	./get_jenkins.sh;
-	docker build -t $image_name .;
-}
+
 local() { echo "ERROR: target not supported" | color red bold; }
 debug() { echo "ERROR: target not supported" | color red bold; }
 
