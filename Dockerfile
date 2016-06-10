@@ -47,6 +47,13 @@ ENV JENKINS_SHA c96d44d4914a154c562f21cd20abdd675ac7f5f3
 ADD jenkins.war /usr/share/jenkins/
 RUN echo "$JENKINS_SHA /usr/share/jenkins/jenkins.war" | sha1sum -c -
 
+# 安装gradle
+WORKDIR /opt
+RUN wget https://downloads.gradle.org/distributions/gradle-2.12-bin.zip \
+  && unzip gradle-2.12-bin.zip \
+  && rm  gradle-2.12-bin.zip
+ENV PATH "/opt/gradle-2.12/bin:$PATH"
+
 ENV JENKINS_UC https://updates.jenkins-ci.org
 RUN chown -R jenkins "$JENKINS_HOME" /usr/share/jenkins/ref
 
