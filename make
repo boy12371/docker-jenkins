@@ -4,11 +4,15 @@ source ../aegis-docker/bin/aegis-config;
 export pwd=$(pwd);
 export repo_root=$(cd $pwd/..; pwd);
 
+node_path=$(which node);
+node_dir=$(cd `dirname $node_path`/..; pwd);
+
 export container_name=jenkins-dev;
 export project_name=docker-jenkins;
 export image_name=ubuntu-jenkins;
 export ip=$jenkins_ip;
 export create_param="-v $HOME/.gradle:/var/jenkins_home/.gradle \
+-v $node_dir:/opt/node-v6.2.0-linux-x64 \
 -v $HOME/.ssh:/var/jenkins_home/.ssh \
 -v ${pwd}/bashrc:/var/jenkins_home/.bashrc \
 -v ${pwd}/data:/var/jenkins_home \
