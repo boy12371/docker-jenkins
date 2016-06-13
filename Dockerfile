@@ -54,6 +54,9 @@ RUN wget https://downloads.gradle.org/distributions/gradle-2.12-bin.zip \
   && rm  gradle-2.12-bin.zip
 ENV PATH "/opt/gradle-2.12/bin:$PATH"
 
+#
+RUN npm install -g bower-requirejs bower
+
 ENV JENKINS_UC https://updates.jenkins-ci.org
 RUN chown -R jenkins "$JENKINS_HOME" /usr/share/jenkins/ref
 
